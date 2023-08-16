@@ -1,6 +1,6 @@
-###Input 5
+### Input 5
 
-###Output
+### Output
 
 ```text
 
