@@ -1,0 +1,13 @@
+### Input: 5
+
+### Output
+
+```text
+*********
+ *******
+  *****
+   ***
+    *
+```
+
+[Question Link](https://practice.geeksforgeeks.org/problems/triangle-pattern-1661493231/1)
