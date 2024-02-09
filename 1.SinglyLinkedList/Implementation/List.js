@@ -84,6 +84,12 @@ class SinglyLinkedList {
     if (this.#head == null) {
       return false;
     }
+
+    if (this.#head.next == null) {
+      const value = this.#head.data;
+      this.#head = null;
+      return value;
+    }
     let previous = null;
     let current = this.#head;
 
@@ -93,6 +99,7 @@ class SinglyLinkedList {
     }
 
     previous.next = null;
+
     this.#size--;
     return current.data;
   }
