@@ -10,67 +10,58 @@ class SinglyLinkedList {
   }
 
   traverse() {
-    if (this.#head == null) {
-      return;
-    }
     let current = this.#head;
     let output = ``;
     while (current !== null) {
-      output += ` ${current.data} ->`;
+      output += `${current.data} -> `;
       current = current.next;
     }
-    output += ` NULL`;
+    output += `NULL`;
     console.log(output);
+    console.log(`The size of the list is ${this.#size}`);
   }
 
-  insertAtBegin(data) {
-    const node = new ListNode(data, this.#head);
-    this.#head = node;
+  insertStart(value) {
+    const newNode = new ListNode(value, this.#head);
+    this.#head = newNode;
     this.#size++;
   }
 
-  insertAtEnd(data) {
-    const node = new ListNode(data);
+  insertLast(value) {
+    const newNode = new ListNode(value);
     if (this.#head == null) {
-      this.#head = node;
+      this.#head = newNode;
       this.#size++;
       return;
     }
-    let current = this.#head;
-    while (current.next !== null) {
-      current = current.next;
+    let lastNode = this.#head;
+    while (lastNode.next !== null) {
+      lastNode = lastNode.next;
     }
-    current.next = node;
+    lastNode.next = newNode;
     this.#size++;
   }
 
-  insertAt(position, data) {
-    if (position < 0) {
-      position = 0;
+  insertAt(position, value) {
+    if (position <= 0) {
+      return this.insertStart(value);
     }
-    if (position > this.#size) {
-      position = this.#size;
+    if (position >= this.#size) {
+      return this.insertLast(value);
     }
-    if (position == 0) {
-      return this.insertAtBegin(data);
-    }
-    if (position == this.#size) {
-      return this.insertAtEnd(data);
-    }
-    const newNode = new ListNode(data);
+    const newNode = new ListNode(value);
 
-    let previousNode = this.#head;
-
+    let previous = this.#head;
     for (let i = 1; i < position; i++) {
-      previousNode = previousNode.next;
+      previous = previous.next;
     }
 
-    newNode.next = previousNode.next;
-    previousNode.next = newNode;
+    newNode.next = previous.next;
+    previous.next = newNode;
     this.#size++;
   }
 
-  removeFirst() {
+  deleteFirst() {
     if (this.#head == null) {
       return false;
     }
@@ -80,14 +71,14 @@ class SinglyLinkedList {
     return value;
   }
 
-  removeLast() {
+  deleteLast() {
     if (this.#head == null) {
       return false;
     }
-
     if (this.#head.next == null) {
       const value = this.#head.data;
       this.#head = null;
+      this.#size--;
       return value;
     }
     let previous = null;
@@ -97,44 +88,29 @@ class SinglyLinkedList {
       previous = current;
       current = current.next;
     }
-
     previous.next = null;
-
     this.#size--;
     return current.data;
   }
 
-  removeAt(position) {
+  deleteAt(position) {
     if (this.#head == null) {
       return false;
     }
-
-    if (position < 0) {
-      position = 0;
+    if (position <= 0) {
+      return this.deleteFirst();
     }
-    if (position >= this.#size) {
-      position = this.#size - 1;
+    if (position >= this.#size - 1) {
+      return this.deleteLast();
     }
-
-    if (position == 0) {
-      return this.removeFirst();
-    }
-    if (position == this.#size - 1) {
-      return this.removeLast();
-    }
-
-    let previousNode = this.#head;
-
+    let previous = this.#head;
     for (let i = 1; i < position; i++) {
-      previousNode = previousNode.next;
+      previous = previous.next;
     }
-
-    const value = previousNode.next.data;
-
-    previousNode.next = previousNode.next.next;
+    const returnValue = previous.next.data;
+    previous.next = previous.next.next;
     this.#size--;
-
-    return value;
+    return returnValue;
   }
 }
 

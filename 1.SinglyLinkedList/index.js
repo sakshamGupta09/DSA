@@ -2,10 +2,13 @@ import SinglyLinkedList from "./Implementation/List.js";
 
 const list = new SinglyLinkedList();
 
-list.insertAtBegin(1);
-list.insertAtEnd(2);
-list.insertAtEnd(3);
-list.insertAtEnd(4);
-list.insertAtEnd(5);
+list.insertStart(1);
+list.insertLast(2);
+list.insertLast(3);
+list.insertLast(4);
+list.insertLast(5);
+list.insertLast(6);
+
+list.deleteAt(4);
 
 list.traverse();
