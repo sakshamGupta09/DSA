@@ -1,3 +1,7 @@
-Given a linked list consisting of L nodes and given a number N. The task is to find the Nth node from the end of the linked list.
+Given head, the head of a linked list, determine if the linked list has a cycle in it.
 
-[Practice Link](https://www.geeksforgeeks.org/problems/nth-node-from-end-of-linked-list/1?utm_source=geeksforgeeks&utm_medium=article_practice_tab&utm_campaign=article_practice_tab).
+There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to. Note that pos is not passed as a parameter.
+
+Return true if there is a cycle in the linked list. Otherwise, return false.
+
+[Practice Link](https://leetcode.com/problems/linked-list-cycle/description/)
