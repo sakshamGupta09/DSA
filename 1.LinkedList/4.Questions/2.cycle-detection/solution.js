@@ -8,7 +8,7 @@ Time complexity : O[n]
 Space complexity: O[n]
 */
 
-function approach1(head, n) {
+function approach1(head) {
   let visited = new Set();
 
   let current = head;
